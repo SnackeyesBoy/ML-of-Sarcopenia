@@ -1,7 +1,7 @@
 ## 簡單介紹
-Model → final_analysis.py
-dataset → sacropneia_F_Student_20260315.csv
-Output labeled of sarcopenia ( 0 未確診 ; 1 確診 ) → Sarcopenia_Labeled_Data_2026.csv
+#### Model → final_analysis.py
+#### dataset → sacropneia_F_Student_20260315.csv
+#### Output labeled of sarcopenia ( 0 未確診 ; 1 確診 ) → Sarcopenia_Labeled_Data_2026.csv
 
 ## 第一部分：完整實驗與分析流程 
 定義問題→排除雜訊→多維度建模→臨床建議。流程分為以下六大步驟：
