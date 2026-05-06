@@ -8,7 +8,7 @@
 ### Step 1: 資料前處理與標記 (Data Preprocessing & Labeling)
 載入資料：讀取包含 591 位女性（其中 433 位為 65 歲以上）的生理與測量數據 CSV 檔。 (File → sacropneia_F_Student_20260315.csv)
 生成標準答案 (Ground Truth)：原始資料並無「肌少症」標籤。我們依照亞洲/歐洲醫學標準(第二部分會提到)，透過程式自動將「握力不足且肌肉量不足」的受試者標記為 1（患病），其餘為 0。
-```
+```python
 # 建立目標變數：肌少症 (女性：握力 < 18 且 ASMI <= 5.7)
 df['sarcopenia'] = ((df['muscle_power'] < 18) & (df['muscle_mass'] <= 5.7)).astype(int)
 df_clean = df.dropna(subset=features + ['muscle_power', 'muscle_mass', 'sarcopenia'])
