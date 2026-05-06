@@ -3,6 +3,9 @@
 #### dataset → sacropneia_F_Student_20260315.csv
 #### Output labeled of sarcopenia ( 0 未確診 ; 1 確診 ) → Sarcopenia_Labeled_Data_2026.csv
 
+___
+
+
 ## 第一部分：完整實驗與分析流程 
 定義問題→排除雜訊→多維度建模→臨床建議。流程分為以下六大步驟：
 ### Step 1: 資料前處理與標記 (Data Preprocessing & Labeling)
@@ -33,7 +36,7 @@ df_clean = df.dropna(subset=features + ['muscle_power', 'muscle_mass', 'sarcopen
 綜合 XGBoost 的「特徵重要性 (Feature Importance)」與統計學的 P-value，剔除貢獻度極低且不顯著的「體重」與「問卷」。
 最終輸出完整的標記資料表（CSV），並建議未來開發僅需少數變數的快速篩檢工具。
 
-
+___
 
 ## 第二部分：如何就現有資訊判斷出肌少症？
 判斷肌少症其實分為兩個層次：黃金標準（實驗室怎麼看）與預測標準（未來社區診所怎麼看）。
