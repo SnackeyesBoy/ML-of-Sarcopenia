@@ -21,11 +21,13 @@ df['sarcopenia'] = ((df['muscle_power'] < 18) & (df['muscle_mass'] <= 5.7)).asty
 df_clean = df.dropna(subset=features + ['muscle_power', 'muscle_mass', 'sarcopenia'])
 ```
 
+
 ### Step 2: 變數篩選與防範數據洩漏 (Feature Selection & Prevent Data Leakage)
 
 關鍵修正：為了開發真正具備「預測」價值的模型，我們嚴格將測量力量的 new_test、muscle_power、muscle_mass 等會導致 模型作弊（AUC=1.0）的目標變數剔除。
 
 確立預測因子：僅保留年齡、身高、體重、小腿圍、功能問卷等 5 項「外觀與基礎生理指標」作為預測特徵。
+
 
 ### Step 3: 統計檢定與基準建立 (Statistical Modeling)
 
@@ -33,14 +35,17 @@ df_clean = df.dropna(subset=features + ['muscle_power', 'muscle_mass', 'sarcopen
 
 使用 邏輯迴歸 (Logistic Regression) 作為預測肌少症的 Baseline（基準線），觀察傳統統計學的分類效能（AUC 約 0.86~0.89）。
 
+
 ### Step 4: 機器學習演算法開發 (Machine Learning)
 
 迴歸任務 (Regression)：導入 Ridge (嶺迴歸) 與 Random Forest (隨機森林)。發現隨機森林在預測力量/質量時，RMSE 顯著較低且 R² 高達 0.94，證明生理數據間存在非線性關係。
 
 分類任務 (Classification)：導入 XGBoost 與 Random Forest 來預測肌少症。
 
+
 ### Step 5: 模型評估與視覺化 (Evaluation & Visualization)
 產出並對比 ROC 曲線。證實機器學習模型（特別是 XGBoost）在預測肌少症上，AUC 高達 0.97 以上，展現極強的疾病捕捉能力。
+
 
 ### Step 6: 發展臨床簡約模型 (Parsimonious Model)
 綜合 XGBoost 的「特徵重要性 (Feature Importance)」與統計學的 P-value，剔除貢獻度極低且不顯著的「體重」與「問卷」。
@@ -53,6 +58,7 @@ ___
 
 判斷肌少症其實分為兩個層次：黃金標準（實驗室怎麼看）與預測標準（未來社區診所怎麼看）。
 
+
 ### 1. 實驗室的黃金標準 (Ground Truth 標記法)
 
 這是我們程式碼中用來產生 sarcopenia 答案的絕對標準（參考 EWGSOP2 準則）：
@@ -64,6 +70,7 @@ ___
 肌肉質量不足：四肢骨骼肌質量指數 (Muscle Mass / ASMI)≤𝟓.𝟕" " 〖"kg\/m" 〗^𝟐。
 
 備註：只要缺其中一項（例如握力很低但肌肉量正常），在此專案中都不算確診肌少症。
+
 
 ### 2. 精簡化預測標準 (演算法篩檢法)
 簡而言之，透過不看握力與肌肉量的資訊，觀察模型還對那些資訊感興趣來當作判斷依據。
