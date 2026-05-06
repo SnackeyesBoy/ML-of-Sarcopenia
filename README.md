@@ -2,6 +2,7 @@
 #### Model → final_analysis.py
 #### dataset → sacropneia_F_Student_20260315.csv
 #### Output labeled of sarcopenia ( 0 未確診 ; 1 確診 ) → Sarcopenia_Labeled_Data_2026.csv
+#### environment → environment.yaml
 
 ___
 
